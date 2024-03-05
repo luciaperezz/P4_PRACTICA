@@ -121,7 +121,29 @@ exports.max_south = (cities) => {
 };
 
 // Cálculo centro de gravedad
-exports.gravity_center = (cities) => {};
+exports.gravity_center = (cities) => {
+    let numeroDeCiudades = cities.length;
+    let valorInicialAcumulador = 0;
+
+    let totalLon = cities.reduce(
+        (longitudAcumulada,ciudad) => {
+            return longitudAcumulada += ciudad.coord.lon;
+        }, valorInicialAcumulador
+    );
+
+    let totalLat = cities.reduce((latitudAcumulada, ciudad) =>{
+        return latitudAcumulada += ciudad.coord.lat;
+    }, valorInicialAcumulador);
+
+    let mediaLon = totalLon/numeroDeCiudades;
+    let mediaLat = totalLat/numeroDeCiudades;
+
+    return {
+        lon: mediaLon,
+        lat: mediaLat
+    };
+
+};
 
 // Más cercano al centro de gravedad
 exports.closest_GC = (cities) => {};
