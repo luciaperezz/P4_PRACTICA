@@ -47,6 +47,19 @@ exports.max_temp_min = (cities) => {
     return maxMinTemp;
 };
 
+//Devuelve temperatura maxima mas baja
+exports.min_temp_man = (cities) => {
+    let minMaxTemp =cities[0].main.temp_max;
+
+    cities.forEach((city) => {
+        let temperaturaMax = city.main.temp_max;
+        if (temperaturaMax > minMaxTemp){
+            minMaxTemp = temperaturaMax;
+        }
+    })
+
+    return minMaxTemp;
+};
 
 
 exports.load = asycn (filename) => {
