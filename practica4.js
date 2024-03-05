@@ -7,6 +7,18 @@ exports.load = (file) => {
     return cities;
 };
 
+//TEMPERATURA MÁXIMA
+exports.max.temp = (cities) => {
+    let maxTemp = cities[0].main.temp; //Coges el primero para iniciar la cuenta, accedes al main y de ahi al temp
+        //tambien podria hacelo por un bucle for habitual
+    cities.array.forEach((city) => {
+        let temperatura = city.main.temp;
+        if (temperatura > maxTemp){
+            maxTemp = temperatura;
+        }
+    });
+}
+
 exports.load = asycn (filename) => {
     const buf = await readFile(filename);
     return JSON.parse(buf);
