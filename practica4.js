@@ -1,16 +1,10 @@
-const fs = require('fs')
-const {readFiles} = require('fs/premises');
 
-// Lectura fichero de forma asíncrona
-exports.load = (file) => {
-    let cities = JSON.parse(fs.readFileSync(file));
-    return cities;
-};
+const {readFile} = require('node:fs/premises');
 
-exports.load = asycn filename => {
-    const buf = await readFile(filename);
+exports.load = async citiesFilename => {
+    const buf = await readFile(citiesFilename);
     return JSON.parse(buf);
-};
+}
 
 // Temperatura máxima
 exports.max_temp = (cities) => {
@@ -86,7 +80,17 @@ const average_temp = exports.average_temp = (cities) => {
 
 // Warmer average temp- ciudad mas caliente que la media
 exports.warmer_average_temp = (cities) => {
-    let temperaturaMedia = average_temp(cities)
+    let temperaturaMedia = average_temp(cities);
+    
+    let ciudadesMasCalientesQueMedia = cities.filter((ciudad) => {
+        let temperratura = ciudad.main.temp;
+        return temperarura > temperaturaMedia;
+    });
+
+    let nombreCiudades = ciudadesMasCalientesQueMedia.map((ciudad) => ciudad.name);
+    return nombresCiudades.join(",");
+
+
 };
 
 // Ciudad más al norte
