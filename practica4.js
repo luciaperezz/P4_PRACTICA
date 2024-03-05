@@ -70,7 +70,18 @@ exports.min_temp_max = (cities) => {
 
 // Temperatura media
 exports.average_temp = (cities) => {
-    
+    let numeroDeCiudades = cities.length;
+    let valorInicialAcumulador = 0;
+
+    let sumaTemperaturas = cities.reduce(
+        (temperaturaAcumulada, ciudad) => {
+            let temperatura = ciudad.main.temp;
+            return temperaturaAcumulada + temperatura;
+        }, valorInicialAcumulador
+    );
+
+    return sumaTemperaturas/numeroDeCiudades;
+
 };
 
 // Warmer average temp
