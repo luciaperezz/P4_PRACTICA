@@ -69,7 +69,7 @@ exports.min_temp_max = (cities) => {
 };
 
 // Temperatura media
-exports.average_temp = (cities) => {
+const average_temp = exports.average_temp = (cities) => {
     let numeroDeCiudades = cities.length;
     let valorInicialAcumulador = 0;
 
@@ -84,8 +84,10 @@ exports.average_temp = (cities) => {
 
 };
 
-// Warmer average temp
-exports.warmer_average_temp = (cities) => {};
+// Warmer average temp- ciudad mas caliente que la media
+exports.warmer_average_temp = (cities) => {
+    let temperaturaMedia = average_temp(cities)
+};
 
 // Ciudad más al norte
 exports.max_north = (cities) => {};
