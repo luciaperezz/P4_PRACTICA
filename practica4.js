@@ -16,8 +16,24 @@ exports.max.temp = (cities) => {
         if (temperatura > maxTemp){
             maxTemp = temperatura;
         }
+    return maxTemp;
     });
 }
+
+//TEMPERATURA MÍNIMA
+exports.min.temp = (cities) => {
+    let minTemp = cities[0].main.temp; 
+
+    cities.array.forEach((city) => {
+        let temperatura = city.main.temp;
+        if (temperatura < minTemp){
+            minTemp = temperatura;
+        }
+    return minTemp;
+    });
+}
+
+
 
 exports.load = asycn (filename) => {
     const buf = await readFile(filename);
