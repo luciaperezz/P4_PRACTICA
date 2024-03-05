@@ -33,6 +33,20 @@ exports.min.temp = (cities) => {
     });
 }
 
+//Devuelve la ciudad que tiene la temperatura minima mas alta
+exports.max_temp_min = (cities) => {
+    let maxMinTemp =cities[0].main.temp_min;
+
+    cities.forEach((city) => {
+        let temperaturaMin = city.main.temp_min;
+        if (temperaturaMin > maxMinTemp){
+            maxMinTemp = temperaturaMin;
+        }
+    })
+
+    return maxMinTemp;
+};
+
 
 
 exports.load = asycn (filename) => {
