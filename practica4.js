@@ -88,9 +88,8 @@ exports.warmer_average_temp = (cities) => {
     });
 
     let nombreCiudades = ciudadesMasCalientesQueMedia.map((ciudad) => ciudad.name);
-    return nombresCiudades.join(",");
-
-
+    return nombresCiudades;
+    
 };
 
 // Ciudad más al norte
