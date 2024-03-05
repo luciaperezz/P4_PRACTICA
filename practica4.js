@@ -7,21 +7,26 @@ exports.load = (file) => {
     return cities;
 };
 
-//TEMPERATURA MÁXIMA
-exports.max.temp = (cities) => {
-    let maxTemp = cities[0].main.temp; //Coges el primero para iniciar la cuenta, accedes al main y de ahi al temp
-        //tambien podria hacelo por un bucle for habitual
-    cities.array.forEach((city) => {
-        let temperatura = city.main.temp;
-        if (temperatura > maxTemp){
-            maxTemp = temperatura;
-        }
-    return maxTemp;
-    });
-}
+exports.load = asycn filename => {
+    const buf = await readFile(filename);
+    return JSON.parse(buf);
+};
 
-//TEMPERATURA MÍNIMA
-exports.min.temp = (cities) => {
+// Temperatura máxima
+exports.max_temp = (cities) => {
+    let maxTemp = cities[0].main.temp; //Coges el primero para iniciar la cuenta, accedes al main y de ahi al temp
+    //tambien podria hacelo por un bucle for habitual
+cities.array.forEach((city) => {
+    let temperatura = city.main.temp;
+    if (temperatura > maxTemp){
+        maxTemp = temperatura;
+    }
+return maxTemp;
+});
+};
+
+// Temperatura mínimo
+exports.min_temp = (cities) => {
     let minTemp = cities[0].main.temp; 
 
     cities.array.forEach((city) => {
@@ -31,8 +36,9 @@ exports.min.temp = (cities) => {
         }
     return minTemp;
     });
-}
+};
 
+// Máxima temperatura mínima
 //Devuelve la ciudad que tiene la temperatura minima mas alta
 exports.max_temp_min = (cities) => {
     let maxMinTemp =cities[0].main.temp_min;
@@ -47,13 +53,14 @@ exports.max_temp_min = (cities) => {
     return maxMinTemp;
 };
 
+// Mínima temperatura máxima
 //Devuelve temperatura maxima mas baja
-exports.min_temp_man = (cities) => {
+exports.min_temp_max = (cities) => {
     let minMaxTemp =cities[0].main.temp_max;
 
     cities.forEach((city) => {
         let temperaturaMax = city.main.temp_max;
-        if (temperaturaMax > minMaxTemp){
+        if (temperaturaMax < minMaxTemp){
             minMaxTemp = temperaturaMax;
         }
     })
@@ -61,26 +68,10 @@ exports.min_temp_man = (cities) => {
     return minMaxTemp;
 };
 
-
-exports.load = asycn (filename) => {
-    const buf = await readFile(filename);
-    return JSON.parse(buf);
-};
-
-// Temperatura máxima
-exports.max_temp = (cities) => {};
-
-// Temperatura mínimo
-exports.min_temp = (cities) => {};
-
-// Máxima temperatura mínima
-exports.max_temp_min = (cities) => {};
-
-// Mínima temperatura máxima
-exports.min_temp_max = (cities) => {};
-
 // Temperatura media
-exports.average_temp = (cities) => {};
+exports.average_temp = (cities) => {
+    
+};
 
 // Warmer average temp
 exports.warmer_average_temp = (cities) => {};
